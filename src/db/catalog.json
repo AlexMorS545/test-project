@@ -3,36 +3,36 @@
 		"id": 1,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	},
 	{
 		"id": 2,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	},
 	{
 		"id": 3,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	},
 	{
 		"id": 4,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	},
 	{
 		"id": 5,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	},
 	{
 		"id": 6,
 		"name": "Item",
 		"price": 50,
-		"image": ""
+		"image": "./image/unnamed.jpg"
 	}
 ]

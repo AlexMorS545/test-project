@@ -14,6 +14,10 @@ body {
   text-decoration: none;
   font-size: 25px;
   color: #000;
+  transition: color 0.3s;
+}
+.header__cart:hover {
+  color: #c29882;
 }
 .items {
   display: flex;
@@ -33,6 +37,7 @@ body {
 .item__title {
   font-size: 20px;
   color: #000;
+  margin: 10px 0;
 }
 .item__image {
   width: 200px;
