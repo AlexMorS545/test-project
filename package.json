@@ -1,0 +1,25 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "test project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMorS545/test-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexMorS545/test-project/issues"
+  },
+  "homepage": "https://github.com/AlexMorS545/test-project#readme",
+  "devDependencies": {
+    "less": "^4.1.1",
+    "parcel-bundler": "^1.12.5"
+  }
+}
