@@ -4,7 +4,7 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel ./src/index.html",
+    "dev": "parcel ./src/index.html ./src/basket.html",
     "build": "parcel build ./dist"
   },
   "repository": {
@@ -21,5 +21,6 @@
   "devDependencies": {
     "less": "^4.1.1",
     "parcel-bundler": "^1.12.5"
-  }
+  },
+  "dependencies": {}
 }

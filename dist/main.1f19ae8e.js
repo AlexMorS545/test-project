@@ -127,7 +127,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var item = {
-  props: ['item'],
+  props: [item],
   template: "<div class=\"item\">\n                    <img :src=\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fplaceholder&psig=AOvVaw3rDIYWHB8mjA2-5L8WEovJ&ust=1619000372270000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNj0nuTMjPACFQAAAAAdAAAAABAD\" alt=\"\" class=\"item__image\">\n                    <h4 class=\"item__title\">{{ item.name }}</h4>\n                    <p class=\"item__price\"></p>\n                    <button class=\"item__btn buy\"></button>\n                </div>"
 };
 var items = {
@@ -140,73 +140,29 @@ var items = {
   components: {
     item: item
   },
-  methods: {
-    getCatalog: function getCatalog() {
-      this.$parent.getJson(this.data.catalog).then(function (data) {
-        return console.log(data);
-      });
-    }
-  },
   mounted: function mounted() {
-    this.$parent.getJson(this.$data.catalog).then(function (data) {
+    this.$parent.getJson('../db/catalog.json').then(function (data) {
       return console.log(data);
     });
   }
 };
 var _default = items;
 exports.default = _default;
-},{}],"db/items.js":[function(require,module,exports) {
+},{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var goods = [{
-  "id": 1,
-  "name": "Item",
-  "price": 50,
-  "image": ""
-}, {
-  "id": 2,
-  "name": "Item",
-  "price": 330,
-  "image": ""
-}, {
-  "id": 3,
-  "name": "Item",
-  "price": 4455,
-  "image": ""
-}, {
-  "id": 4,
-  "name": "Item",
-  "price": 8800,
-  "image": ""
-}, {
-  "id": 5,
-  "name": "Item",
-  "price": 1200,
-  "image": ""
-}, {
-  "id": 6,
-  "name": "Item",
-  "price": 260,
-  "image": ""
-}];
-var _default = goods;
-exports.default = _default;
-},{}],"js/app.js":[function(require,module,exports) {
-"use strict";
 
 var _cart = _interopRequireDefault(require("./cart"));
 
 var _catalog = _interopRequireDefault(require("./catalog"));
 
-var _items = _interopRequireDefault(require("../db/items"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = new Vue({
+var app = {
   el: '#app',
   components: {
     cart: _cart.default,
@@ -215,10 +171,9 @@ var app = new Vue({
   data: {
     title: 'Каталог',
     basketTitle: 'Корзина',
-    catalog: '../db/catalog.json',
-    items: _items.default
+    catalog: '../db/catalog.json'
   },
-  methods: {
+  metods: {
     getJson: function getJson(url) {
       return fetch(url).then(function (result) {
         return result.json();
@@ -227,8 +182,18 @@ var app = new Vue({
       });
     }
   }
-});
-},{"./cart":"js/cart.js","./catalog":"js/catalog.js","../db/items":"db/items.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+};
+var _default = a;
+exports.default = _default;
+},{"./cart":"js/cart.js","./catalog":"js/catalog.js"}],"main.js":[function(require,module,exports) {
+"use strict";
+
+var _app = _interopRequireDefault(require("./js/app"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = new Vue(_app.default);
+},{"./js/app":"js/app.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -256,7 +221,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42193" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40847" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -432,5 +397,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
-//# sourceMappingURL=/app.c3f9f951.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
+//# sourceMappingURL=/main.1f19ae8e.js.map

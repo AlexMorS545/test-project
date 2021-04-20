@@ -1,3 +1,52 @@
 body {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(216, 216, 216);
+}
+.header {
+    display: flex;
+    padding: 30px 0;
+    align-items: center;
+    justify-content: space-between;
+    &__title {
+        font-size: 30px;
+    }
+    &__cart {
+        text-decoration: none;
+        font-size: 25px;
+        color: #000;
+    }
+}
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    width: 30%;
+    border: 1px solid #000;
+    margin: 0 0 30px 0;
+    &__title {
+        font-size: 20px;
+        color: #000;
+    }
+    &__image {
+        width: 200px;
+    }
+    &__btn {
+        outline: none;
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: .5rem 2rem;
+        box-sizing: border-box;
+        transition: all .3s;
+        
+        &:hover {
+            background-color: #c29882;
+            color:#fff;
+        }
+    }
 }
