@@ -16,14 +16,25 @@
         <a class="header__cart" href="./index.html"><i class="fas fa-angle-double-left"></i></a>
     </header>
     <div class="form-wrp">
-        <div class="credit">
-
+        <div class="credit" v-if="basket.length > 0">
+            <div class="credit__logo">
+                <img class="credit__image" src="./image/logo-placeholder.jpeg" alt="logo">
+            </div>
+            <div class="credit__number">####&#9####&#9####&#9####</div>
+            <div class="credit__holder-wrp">
+                <p class="credit__holder">Card holder</p>
+                <p class="credit__expires">Expirec</p>
+            </div>
+            <div class="credit__name-wrp">
+                <p class="credit__name">name lastname</p>
+                <p class="credit__date">mm/yy</p>
+            </div>
         </div>
         <form class="order" v-if="basket.length > 0">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
+            <input id="number" class="order__card-number" type="text" placeholder="Card Number">
+            <input id="holder" class="order__card-holder" type="text" placeholder="Card Holder">
+            <input id="date" class="order__card-date" type="text" placeholder="Expires">
+            <input id="cvv" class="order__card-cvv" type="text" placeholder="CVV">
         </form>
     </div>
     <div class="cart" v-if="basket.length > 0">
@@ -31,12 +42,13 @@
             <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
             <img src="./image/unnamed.jpg" alt="photo item" class="cart__image">
             <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
+            <span class="cart__price">{{ item.price }}&nbsp;&#36;</span>
             <div class="btn-wrp">
                 <button class="cart__btn buy btn" v-on:click="addToBasket(item)">+</button>
                 <span class="cart__count">{{ item.count }}</span>
                 <button class="cart__btn btn" v-on:click="removeFromBasket(item)">-</button>
             </div>
-            <p class="cart__price">{{ item.price * item.count }}</p>
+            <p class="cart__price">{{ item.price * item.count }}&nbsp;&#36;</p>
         </div>
         <div class="cart__summa-wrp">
             <h5 class="cart__summa">Total summa:&nbsp;{{ summa }}&nbsp;&#36;</h5>

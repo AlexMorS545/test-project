@@ -2047,7 +2047,7 @@ var app = new Vue({
       }
     }
 
-    _axios.default.get('https://api.bincodes.com/bin/json/9fc53b3db09ca830488d19546a4fc2a1/515735/').then(function (response) {
+    _axios.default.get('https://api.bincodes.com/bin/?format=json&api_key=6348b96e150ca0defa28daf2f02401e8&bin=515735').then(function (response) {
       _this2.info = response.data;
       console.log(_this2.info);
     }).catch(function (error) {
@@ -2083,7 +2083,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44853" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50492" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -75,6 +75,8 @@ body {
 }
 .cart__price {
   margin: 0;
+  font-size: 20px;
+  font-weight: 500;
 }
 .cart__count {
   margin: 0 10px;
@@ -104,6 +106,90 @@ body {
 .cart__btn-buy {
   text-transform: uppercase;
   background-color: #e0e0e0;
+}
+.form-wrp {
+  position: relative;
+}
+.order {
+  position: relative;
+  width: 80%;
+  margin: 20px auto;
+  padding: 200px 150px 20px;
+  text-align: center;
+  background-color: #c8c8c8;
+  border: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+}
+.order input {
+  margin-top: 20px;
+  padding: 5px;
+}
+.order input:first-of-type {
+  margin-top: 0;
+}
+.order__card-number {
+  width: 100%;
+}
+.order__card-holder {
+  width: 100%;
+}
+.order__card-date {
+  width: 70px;
+}
+.order__card-cvv {
+  width: 70px;
+  position: absolute;
+  right: 150px;
+  bottom: 20px;
+}
+.credit {
+  width: 590px;
+  position: absolute;
+  background-color: #c6edf8;
+  border: 1px solid #000;
+  border-radius: 20px;
+  padding: 20px 50px;
+  z-index: 2;
+  top: -25%;
+  left: 23.5%;
+}
+.credit__logo {
+  text-align: end;
+}
+.credit__image {
+  width: 100px;
+}
+.credit__number {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+  letter-spacing: 1.5px;
+}
+.credit__holder-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.credit__name-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 600;
+}
+.credit__holder,
+.credit__expires {
+  margin: 0;
+}
+.credit__name,
+.credit__date {
+  margin: 0;
+  text-transform: uppercase;
 }
 
 

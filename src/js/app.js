@@ -69,7 +69,7 @@ const app = new Vue({
             }
         }
         axios
-            .get('https://api.bincodes.com/bin/json/9fc53b3db09ca830488d19546a4fc2a1/515735/')
+            .get('https://api.bincodes.com/bin/?format=json&api_key=6348b96e150ca0defa28daf2f02401e8&bin=515735')
             .then(response => {
                 this.info = response.data
                 console.log(this.info);

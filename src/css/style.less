@@ -75,6 +75,8 @@ body {
     }
     &__price {
         margin: 0;
+        font-size: 20px;
+        font-weight: 500;
     }
     &__count {
         margin: 0 10px;
@@ -105,4 +107,92 @@ body {
         text-transform: uppercase;
         background-color: rgb(224, 224, 224);
     }
+}
+.form-wrp {
+    position: relative;
+}
+.order {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    padding: 200px 150px 20px;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    & input {
+        margin-top: 20px;
+        padding: 5px;
+    }
+    & input:first-of-type {
+        margin-top: 0;
+    }
+    
+    &__card-number{
+        width: 100%;
+    }
+    &__card-holder{
+        width: 100%;
+    }
+    &__card-date {
+        width: 70px;
+    }
+    &__card-cvv {
+        width: 70px;
+        position: absolute;
+        right: 150px;
+        bottom: 20px;
+    }
+}
+.credit {
+    width: 590px;
+    position: absolute;
+    background-color: #c6edf8;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 20px 50px;
+    z-index: 2;
+    top: -25%;
+    left: 23.5%;
+    &__logo {
+        text-align: end;
+    }
+    &__image {
+        width: 100px;
+    }
+    &__number {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 20px;
+        letter-spacing: 1.5px;
+    }
+    &__holder-wrp {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    &__name-wrp {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:5px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+    &__holder,
+    &__expires {
+        margin: 0;
+    }
+    &__name,
+    &__date {
+        margin: 0;
+        text-transform: uppercase;
+    }
+    // &__date {
+
+    // }
 }
