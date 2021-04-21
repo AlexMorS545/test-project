@@ -1,4 +1,5 @@
 import catalog from '../db/items'
+import axios from 'axios'
 
 const app = new Vue({
     el: '#app',
@@ -8,8 +9,8 @@ const app = new Vue({
             basketTitle: 'Basket',
             items: [],
             basket: [],
-            cart: [],
-            summa: 0
+            summa: 0,
+            info: null
         }
     },
     methods: {
@@ -25,13 +26,13 @@ const app = new Vue({
                 const el = Object.assign({count:1}, item)
                 this.basket.push(el)
             }
-            localStorage.setItem('cartItems', JSON.stringify(this.basket))
             this.totalSumma()
-            this.renderCart()
+            this.saveCart()
         },
         removeItem(item) {
             this.basket.splice(this.basket.indexOf(item), 1)
             this.totalSumma()
+            this.saveCart()
         },
         removeFromBasket(item) {
             this.basket.forEach(elem => {
@@ -44,21 +45,36 @@ const app = new Vue({
                 }
             })
             this.totalSumma()
+            this.saveCart()
         },
         totalSumma() {
             this.summa = this.basket.reduce((s, item) => s += (item.count * item.price), 0)
+            localStorage.setItem('summa', this.summa)
         },
-        renderCart() {
-            this.cart = localStorage.getItem('cartItems') 
-            console.log('local ', JSON.parse(this.cart))
+        saveCart() {
+            localStorage.setItem('cartItems', JSON.stringify(this.basket)) 
         }
     },
     mounted() {
         catalog.forEach(item => {
             this.items.push(item)
         })
-    },
-    computed: {
+        if(localStorage.getItem('cartItems') && localStorage.getItem('summa')) {
+            try {
+                this.basket = JSON.parse(localStorage.getItem('cartItems'))
+                this.summa = localStorage.getItem('summa')
+            } catch(e) {
+                localStorage.removeItem('cartItems')
+                localStorage.removeItem('summa')
+            }
+        }
+        axios
+            .get('https://api.bincodes.com/bin/json/9fc53b3db09ca830488d19546a4fc2a1/515735/')
+            .then(response => {
+                this.info = response.data
+                console.log(this.info);
+            })
+            .catch(error => console.log('error', error))
     }
 
 })

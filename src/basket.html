@@ -15,16 +15,24 @@
         <h3 class="title header__title">{{ basketTitle }}</h3>
         <a class="header__cart" href="./index.html"><i class="fas fa-angle-double-left"></i></a>
     </header>
-    <div class="cart" v-if="cart.length > 0">
-        <div class="cart__item" v-for="item in cart" :key="item.id">
+    <form class="order">
+        <input type="text" mask="['(###)-###-##-##']">
+    </form>
+    <div class="cart" v-if="basket.length > 0">
+        <div class="cart__item" v-for="(item, n) in basket" :key="item.id">
+            <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
             <img src="./image/unnamed.jpg" alt="photo item" class="cart__image">
             <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
             <div class="btn-wrp">
                 <button class="cart__btn buy btn" v-on:click="addToBasket(item)">+</button>
                 <span class="cart__count">{{ item.count }}</span>
-                <button class="cart__btn buy btn" v-on:click="addToBasket(item)">-</button>
+                <button class="cart__btn btn" v-on:click="removeFromBasket(item)">-</button>
             </div>
-            <p class="cart__price">{{ item.price }}</p>
+            <p class="cart__price">{{ item.price * item.count }}</p>
+        </div>
+        <div class="cart__summa-wrp">
+            <h5 class="cart__summa">Total summa:&nbsp;{{ summa }}&nbsp;&#36;</h5>
+            <button class="cart__btn-buy btn" v-on:click="removeFromBasket(item)">buy</button>
         </div>
     </div>
     <h3 v-else class="h2">Add items in cart</h3>
