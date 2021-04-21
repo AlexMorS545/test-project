@@ -20,16 +20,22 @@
             <img src="/unnamed.89899c65.jpg" alt="photo item" class="item__image">
             <h4 class="item__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
             <p class="item__price">{{ item.price }}</p>
-            <button class="item__btn buy" v-on:click="addToBasket(item)">add to cart</button>
+            <button class="item__btn buy btn" v-on:click="addToBasket(item)">add to cart</button>
         </div>
     </div>
     <hr>
-    <div class="items" v-if="cartItems.length > 0">
-        <div class="item" v-for="item in cartItems" :key="item.id">
-            <img src="/unnamed.89899c65.jpg" alt="photo item" class="item__image">
-            <h4 class="item__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
-            <p class="item__price">{{ item.price }}</p>
-            <button class="item__btn buy" v-on:click="addToBasket(item)">add to cart</button>
+    <div class="cart" v-if="basket.length > 0">
+        <h3 class="cart__summa">{{ summa }}</h3>
+        <div class="cart__item" v-for="item in basket" :key="item.id">
+            <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
+            <img src="/unnamed.89899c65.jpg" alt="photo item" class="cart__image">
+            <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
+            <div class="btn-wrp">
+                <button class="cart__btn buy btn" v-on:click="addToBasket(item)">+</button>
+                <span class="cart__count">{{ item.count }}</span>
+                <button class="cart__btn buy btn" v-on:click="removeFromBasket(item)">-</button>
+            </div>
+            <p class="cart__price">{{ item.price * item.count }}</p>
         </div>
     </div>
     <h3 v-else="" class="h2">Add items in cart</h3>

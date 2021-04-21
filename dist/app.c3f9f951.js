@@ -168,25 +168,73 @@ var app = new Vue({
   el: '#app',
   data: function data() {
     return {
-      title: 'Каталог',
-      basketTitle: 'Корзина',
+      title: 'Catalog',
+      basketTitle: 'Basket',
       items: [],
-      cartItems: []
+      basket: [],
+      cart: [],
+      summa: 0
     };
   },
   methods: {
     addToBasket: function addToBasket(item) {
-      this.cartItems.push(item);
-      console.log(this.cartItems);
+      var find = this.basket.find(function (el) {
+        return el.id === item.id;
+      });
+
+      if (find) {
+        this.basket.forEach(function (elem) {
+          if (elem.id === item.id) {
+            elem.count++;
+          }
+        });
+      } else {
+        var el = Object.assign({
+          count: 1
+        }, item);
+        this.basket.push(el);
+      }
+
+      localStorage.setItem('cartItems', JSON.stringify(this.basket));
+      this.totalSumma();
+      this.renderCart();
+    },
+    removeItem: function removeItem(item) {
+      this.basket.splice(this.basket.indexOf(item), 1);
+      this.totalSumma();
+    },
+    removeFromBasket: function removeFromBasket(item) {
+      var _this = this;
+
+      this.basket.forEach(function (elem) {
+        if (elem.id === item.id) {
+          if (elem.count > 1) {
+            elem.count--;
+          } else {
+            _this.removeItem();
+          }
+        }
+      });
+      this.totalSumma();
+    },
+    totalSumma: function totalSumma() {
+      this.summa = this.basket.reduce(function (s, item) {
+        return s += item.count * item.price;
+      }, 0);
+    },
+    renderCart: function renderCart() {
+      this.cart = localStorage.getItem('cartItems');
+      console.log('local ', JSON.parse(this.cart));
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     _items.default.forEach(function (item) {
-      _this.items.push(item);
+      _this2.items.push(item);
     });
-  }
+  },
+  computed: {}
 });
 },{"../db/items":"db/items.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -216,7 +264,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53079" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46741" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

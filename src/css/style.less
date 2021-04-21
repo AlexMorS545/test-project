@@ -19,6 +19,19 @@ body {
         }
     }
 }
+.btn {
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: .5rem 2rem;
+    box-sizing: border-box;
+    transition: all .3s;
+    
+    &:hover {
+        background-color: #c29882;
+        color:#fff;
+    }
+}
 .items {
     display: flex;
     flex-wrap: wrap;
@@ -41,17 +54,43 @@ body {
     &__image {
         width: 200px;
     }
-    &__btn {
-        outline: none;
+}
+.cart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    &__item {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 20px;
         border: 1px solid #000;
-        border-radius: 5px;
-        padding: .5rem 2rem;
-        box-sizing: border-box;
-        transition: all .3s;
-        
-        &:hover {
-            background-color: #c29882;
-            color:#fff;
-        }
+        margin: 0 0 20px 0;
+    }
+    &__price {
+        margin: 0;
+    }
+    &__count {
+        margin: 0 10px;
+        font-size: 20px;
+    }
+    &__image {
+        width: 80px;
+    }
+    &__btn {
+        padding: 1px 8px;
+        font-size: 25px;
+    }
+    & .fa-trash-alt {
+        color: rgb(248, 104, 104);
+        cursor: pointer;
+    }
+    &__summa {
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
