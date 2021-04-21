@@ -15,9 +15,17 @@
         <h3 class="title header__title">{{ basketTitle }}</h3>
         <a class="header__cart" href="/index.html"><i class="fas fa-angle-double-left"></i></a>
     </header>
-    <form class="order">
-        <input type="text" mask="['(###)-###-##-##']">
-    </form>
+    <div class="form-wrp">
+        <div class="credit">
+
+        </div>
+        <form class="order" v-if="basket.length > 0">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+        </form>
+    </div>
     <div class="cart" v-if="basket.length > 0">
         <div class="cart__item" v-for="(item, n) in basket" :key="item.id">
             <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
