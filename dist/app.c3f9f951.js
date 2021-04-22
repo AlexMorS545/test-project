@@ -165,17 +165,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var images = [{
-  id: 1,
-  src: './static/image/logo-placeholder.jpeg'
+  id: 0,
+  src: 'https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png'
 }, {
   id: 2,
-  src: './static/image/mir.png'
+  src: 'https://www.sostav.ru/images/news/2018/03/19/c3m0fniv.jpg'
 }, {
   id: 4,
-  src: './static/image/visa.png'
+  src: 'https://infocity.az/wp-content/uploads/2020/07/Visa-logo.jpg'
 }, {
   id: 5,
-  src: './static/image/mastercard.svg'
+  src: 'https://logos-marcas.com/wp-content/uploads/2020/09/MasterCard-Logotipo-1996-2016.jpg'
 }];
 var _default = images;
 exports.default = _default;
@@ -2046,18 +2046,23 @@ var app = new Vue({
     removeFromBasket: function removeFromBasket(item) {
       var _this = this;
 
-      this.basket.forEach(function (elem) {
+      this.basket.find(function (elem) {
         if (elem.id === item.id) {
           if (elem.count > 1) {
+            // this.removeItem()
             elem.count--;
           } else {
+            // elem.count--
             _this.removeItem();
           }
         }
+
+        _this.totalSumma();
+
+        _this.saveCart();
+
+        _this.getCount();
       });
-      this.totalSumma();
-      this.saveCart();
-      this.getCount();
     },
     totalSumma: function totalSumma() {
       this.summa = this.basket.reduce(function (s, item) {
@@ -2073,22 +2078,26 @@ var app = new Vue({
         return c += item.count;
       }, 0);
       localStorage.setItem('summa', this.summa);
-    } //     changeImage(img) {
-    //         let imageID = +this.cardNumber.charAt(0)
-    //         this.images.forEach(img => {
-    //             if(imageID === img.id && imageID !== 0) {
-    //                 this.imageSrc = img.src
-    //                 console.log('src', this.imageSrc)
-    //             }
-    //         })
-    //     }         
+    },
+    changeImage: function changeImage(id) {
+      var _this2 = this;
 
+      this.images.forEach(function (img) {
+        if (+id === img.id) {
+          _this2.imageSrc = img.src;
+          return _this2.imageSrc;
+        }
+      });
+    },
+    cleanBasket: function cleanBasket() {
+      localStorage.clear();
+    }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     _catalog.default.forEach(function (item) {
-      return _this2.items.push(item);
+      return _this3.items.push(item);
     });
 
     if (localStorage.getItem('cartItems') && localStorage.getItem('summa')) {
@@ -2102,7 +2111,7 @@ var app = new Vue({
     }
 
     _images.default.forEach(function (img) {
-      return _this2.images.push(img);
+      return _this3.images.push(img);
     });
   }
 });
@@ -2134,7 +2143,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

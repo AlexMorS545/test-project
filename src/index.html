@@ -17,7 +17,7 @@
     </header>
     <div class="items">
         <div class="item" v-for="item in items" :key="item.id">
-            <img src="./static/image/unnamed.jpg" alt="photo item" class="item__image">
+            <img src="./image/unnamed.jpg" alt="photo item" class="item__image">
             <h4 class="item__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
             <p class="item__price">{{ item.price }}&nbsp;&#36;</p>
             <button class="item__btn buy btn" v-on:click="addToBasket(item)">add to cart</button>

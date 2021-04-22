@@ -18,7 +18,7 @@
     <div class="form-wrp">
         <div class="credit" v-if="basket.length > 0">
             <div class="credit__logo">
-                <img class="credit__image" v-for="img of images" :src="img.src" alt="logo">
+                <img class="credit__image" :src="imageSrc" alt="logo">
             </div>
             <input id="credit-number" v-model="cardNumber" v-mask="'#### #### #### ####'" class="credit__input" type="text" disabled placeholder="#### #### #### ####">
             <div class="credit__holder-wrp">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <form class="order" v-if="basket.length > 0">
-            <input id="number" v-model="cardNumber" v-mask="'#### #### #### ####'" class="order__card-number" type="text" placeholder="#### #### #### ####">
+            <input id="number" v-model="cardNumber" v-bind="changeImage(cardNumber.substring(0, 1))" v-mask="'#### #### #### ####'" class="order__card-number" type="text" placeholder="Card Number">
             <input id="holder" v-model="cardHolder" class="order__card-holder" type="text" placeholder="Card Holder">
             <input id="date" v-model="cardExpires" v-mask="'##/##'" class="order__card-date" type="text" placeholder="Expires">
             <input id="cvv" v-model="cardCVV" v-mask="'###'" class="order__card-cvv" type="text" placeholder="CVV">
@@ -40,7 +40,7 @@
     <div class="cart" v-if="basket.length > 0">
         <div class="cart__item" v-for="item in basket" :key="item.id">
             <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
-            <img src="./static/image/unnamed.jpg" alt="photo item" class="cart__image">
+            <img src="./image/unnamed.jpg" alt="photo item" class="cart__image">
             <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
             <span class="cart__price">{{ item.price }}&nbsp;&#36;</span>
             <div class="btn-wrp">
@@ -52,7 +52,7 @@
         </div>
         <div class="cart__summa-wrp">
             <h5 class="cart__summa">Total summa:&nbsp;{{ summa }}&nbsp;&#36;</h5>
-            <button class="cart__btn-buy btn" v-on:click="removeFromBasket(item)">buy</button>
+            <button type="submit" class="cart__btn-buy btn" v-on:click="cleanBasket">buy</button>
         </div>
     </div>
     <h3 v-else class="h2">Add items in cart</h3>
