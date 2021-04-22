@@ -166,16 +166,16 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var images = [{
   id: 1,
-  src: './image/logo-placeholder.jpeg'
+  src: './static/image/logo-placeholder.jpeg'
 }, {
   id: 2,
-  src: './image/mir.png'
+  src: './static/image/mir.png'
 }, {
   id: 4,
-  src: './image/visa.png'
+  src: './static/image/visa.png'
 }, {
   id: 5,
-  src: './image/mastercard.svg'
+  src: './static/image/mastercard.svg'
 }];
 var _default = images;
 exports.default = _default;
@@ -2134,7 +2134,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33209" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

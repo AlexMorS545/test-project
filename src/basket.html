@@ -40,7 +40,7 @@
     <div class="cart" v-if="basket.length > 0">
         <div class="cart__item" v-for="item in basket" :key="item.id">
             <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
-            <img src="./image/unnamed.jpg" alt="photo item" class="cart__image">
+            <img src="./static/image/unnamed.jpg" alt="photo item" class="cart__image">
             <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>
             <span class="cart__price">{{ item.price }}&nbsp;&#36;</span>
             <div class="btn-wrp">
