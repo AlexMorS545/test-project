@@ -108,6 +108,9 @@ body {
         background-color: rgb(224, 224, 224);
     }
 }
+.fa-shopping-cart {
+    margin: 0 0 0 20px;
+}
 .form-wrp {
     position: relative;
 }
@@ -124,6 +127,10 @@ body {
     & input {
         margin-top: 20px;
         padding: 5px;
+        &:focus {
+            background-color: rgb(224, 246, 252);
+            outline: none;
+        }
     }
     & input:first-of-type {
         margin-top: 0;
@@ -153,7 +160,7 @@ body {
     border-radius: 20px;
     padding: 20px 50px;
     z-index: 2;
-    top: -25%;
+    top: -20%;
     left: 23.5%;
     &__logo {
         text-align: end;
@@ -161,12 +168,15 @@ body {
     &__image {
         width: 100px;
     }
-    &__number {
-        text-align: center;
+    &__input {
+        width: 100%;
+        margin: 40px 0 10px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        background-color: transparent;
         font-size: 20px;
         font-weight: 500;
-        margin-top: 20px;
-        letter-spacing: 1.5px;
     }
     &__holder-wrp {
         display: flex;
@@ -191,8 +201,14 @@ body {
     &__date {
         margin: 0;
         text-transform: uppercase;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        background-color: transparent;
+        padding: 0;
     }
-    // &__date {
-
-    // }
+    &__date {
+        width: 90px;
+        text-align: end;
+    }
 }

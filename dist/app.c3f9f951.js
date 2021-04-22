@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"db/items.js":[function(require,module,exports) {
+})({"db/catalog.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -156,6 +156,28 @@ var catalog = [{
   "image": "../image/unnamed.jpg"
 }];
 var _default = catalog;
+exports.default = _default;
+},{}],"db/images.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var images = [{
+  id: 1,
+  src: './image/logo-placeholder.jpeg'
+}, {
+  id: 2,
+  src: './image/mir.png'
+}, {
+  id: 4,
+  src: './image/visa.png'
+}, {
+  id: 5,
+  src: './image/mastercard.svg'
+}];
+var _default = images;
 exports.default = _default;
 },{}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
@@ -1957,12 +1979,19 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"../node_modules/axios/lib/helpers/isAxiosError.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"js/app.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../node_modules/vue-the-mask/dist/vue-the-mask.js":[function(require,module,exports) {
+var define;
+(function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueTheMask=t():e.VueTheMask=t()})(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,t),a.l=!0,a.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=".",t(t.s=10)}([function(e,t){e.exports={"#":{pattern:/\d/},X:{pattern:/[0-9a-zA-Z]/},S:{pattern:/[a-zA-Z]/},A:{pattern:/[a-zA-Z]/,transform:function(e){return e.toLocaleUpperCase()}},a:{pattern:/[a-zA-Z]/,transform:function(e){return e.toLocaleLowerCase()}},"!":{escape:!0}}},function(e,t,n){"use strict";function r(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!0),t}var a=n(2),o=n(0),i=n.n(o);t.a=function(e,t){var o=t.value;if((Array.isArray(o)||"string"==typeof o)&&(o={mask:o,tokens:i.a}),"INPUT"!==e.tagName.toLocaleUpperCase()){var u=e.getElementsByTagName("input");if(1!==u.length)throw new Error("v-mask directive requires 1 input, found "+u.length);e=u[0]}e.oninput=function(t){if(t.isTrusted){var i=e.selectionEnd,u=e.value[i-1];for(e.value=n.i(a.a)(e.value,o.mask,!0,o.tokens);i<e.value.length&&e.value.charAt(i-1)!==u;)i++;e===document.activeElement&&(e.setSelectionRange(i,i),setTimeout(function(){e.setSelectionRange(i,i)},0)),e.dispatchEvent(r("input"))}};var s=n.i(a.a)(e.value,o.mask,!0,o.tokens);s!==e.value&&(e.value=s,e.dispatchEvent(r("input")))}},function(e,t,n){"use strict";var r=n(6),a=n(5);t.a=function(e,t){var o=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],i=arguments[3];return Array.isArray(t)?n.i(a.a)(r.a,t,i)(e,t,o,i):n.i(r.a)(e,t,o,i)}},function(e,t,n){"use strict";function r(e){e.component(s.a.name,s.a),e.directive("mask",i.a)}Object.defineProperty(t,"__esModule",{value:!0});var a=n(0),o=n.n(a),i=n(1),u=n(7),s=n.n(u);n.d(t,"TheMask",function(){return s.a}),n.d(t,"mask",function(){return i.a}),n.d(t,"tokens",function(){return o.a}),n.d(t,"version",function(){return c});var c="0.11.1";t.default=r,"undefined"!=typeof window&&window.Vue&&window.Vue.use(r)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(1),a=n(0),o=n.n(a),i=n(2);t.default={name:"TheMask",props:{value:[String,Number],mask:{type:[String,Array],required:!0},masked:{type:Boolean,default:!1},tokens:{type:Object,default:function(){return o.a}}},directives:{mask:r.a},data:function(){return{lastValue:null,display:this.value}},watch:{value:function(e){e!==this.lastValue&&(this.display=e)},masked:function(){this.refresh(this.display)}},computed:{config:function(){return{mask:this.mask,tokens:this.tokens,masked:this.masked}}},methods:{onInput:function(e){e.isTrusted||this.refresh(e.target.value)},refresh:function(e){this.display=e;var e=n.i(i.a)(e,this.mask,this.masked,this.tokens);e!==this.lastValue&&(this.lastValue=e,this.$emit("input",e))}}}},function(e,t,n){"use strict";function r(e,t,n){return t=t.sort(function(e,t){return e.length-t.length}),function(r,a){for(var o=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],i=0;i<t.length;){var u=t[i];i++;var s=t[i];if(!(s&&e(r,s,!0,n).length>u.length))return e(r,u,o,n)}return""}}t.a=r},function(e,t,n){"use strict";function r(e,t){var n=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],r=arguments[3];e=e||"",t=t||"";for(var a=0,o=0,i="";a<t.length&&o<e.length;){var u=t[a],s=r[u],c=e[o];s&&!s.escape?(s.pattern.test(c)&&(i+=s.transform?s.transform(c):c,a++),o++):(s&&s.escape&&(a++,u=t[a]),n&&(i+=u),c===u&&o++,a++)}for(var f="";a<t.length&&n;){var u=t[a];if(r[u]){f="";break}f+=u,a++}return i+f}t.a=r},function(e,t,n){var r=n(8)(n(4),n(9),null,null);e.exports=r.exports},function(e,t){e.exports=function(e,t,n,r){var a,o=e=e||{},i=typeof e.default;"object"!==i&&"function"!==i||(a=e,o=e.default);var u="function"==typeof o?o.options:o;if(t&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns),n&&(u._scopeId=n),r){var s=u.computed||(u.computed={});Object.keys(r).forEach(function(e){var t=r[e];s[e]=function(){return t}})}return{esModule:a,exports:o,options:u}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("input",{directives:[{name:"mask",rawName:"v-mask",value:e.config,expression:"config"}],attrs:{type:"text"},domProps:{value:e.display},on:{input:e.onInput}})},staticRenderFns:[]}},function(e,t,n){e.exports=n(3)}])});
+},{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
-var _items = _interopRequireDefault(require("../db/items"));
+var _catalog = _interopRequireDefault(require("../db/catalog"));
+
+var _images = _interopRequireDefault(require("../db/images"));
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _vueTheMask = _interopRequireDefault(require("vue-the-mask"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1974,8 +2003,15 @@ var app = new Vue({
       basketTitle: 'Basket',
       items: [],
       basket: [],
+      images: [],
+      imageSrc: '',
       summa: 0,
-      info: null
+      info: null,
+      count: 0,
+      cardNumber: '',
+      cardHolder: '',
+      cardExpires: '',
+      cardCVV: ''
     };
   },
   methods: {
@@ -1999,11 +2035,13 @@ var app = new Vue({
 
       this.totalSumma();
       this.saveCart();
+      this.getCount();
     },
     removeItem: function removeItem(item) {
       this.basket.splice(this.basket.indexOf(item), 1);
       this.totalSumma();
       this.saveCart();
+      this.getCount();
     },
     removeFromBasket: function removeFromBasket(item) {
       var _this = this;
@@ -2019,6 +2057,7 @@ var app = new Vue({
       });
       this.totalSumma();
       this.saveCart();
+      this.getCount();
     },
     totalSumma: function totalSumma() {
       this.summa = this.basket.reduce(function (s, item) {
@@ -2028,13 +2067,28 @@ var app = new Vue({
     },
     saveCart: function saveCart() {
       localStorage.setItem('cartItems', JSON.stringify(this.basket));
-    }
+    },
+    getCount: function getCount() {
+      this.count = this.basket.reduce(function (c, item) {
+        return c += item.count;
+      }, 0);
+      localStorage.setItem('summa', this.summa);
+    } //     changeImage(img) {
+    //         let imageID = +this.cardNumber.charAt(0)
+    //         this.images.forEach(img => {
+    //             if(imageID === img.id && imageID !== 0) {
+    //                 this.imageSrc = img.src
+    //                 console.log('src', this.imageSrc)
+    //             }
+    //         })
+    //     }         
+
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    _items.default.forEach(function (item) {
-      _this2.items.push(item);
+    _catalog.default.forEach(function (item) {
+      return _this2.items.push(item);
     });
 
     if (localStorage.getItem('cartItems') && localStorage.getItem('summa')) {
@@ -2047,15 +2101,12 @@ var app = new Vue({
       }
     }
 
-    _axios.default.get('https://api.bincodes.com/bin/?format=json&api_key=6348b96e150ca0defa28daf2f02401e8&bin=515735').then(function (response) {
-      _this2.info = response.data;
-      console.log(_this2.info);
-    }).catch(function (error) {
-      return console.log('error', error);
+    _images.default.forEach(function (img) {
+      return _this2.images.push(img);
     });
   }
 });
-},{"../db/items":"db/items.js","axios":"../node_modules/axios/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../db/catalog":"db/catalog.js","../db/images":"db/images.js","axios":"../node_modules/axios/index.js","vue-the-mask":"../node_modules/vue-the-mask/dist/vue-the-mask.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2083,7 +2134,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50492" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

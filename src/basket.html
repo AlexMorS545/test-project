@@ -18,27 +18,27 @@
     <div class="form-wrp">
         <div class="credit" v-if="basket.length > 0">
             <div class="credit__logo">
-                <img class="credit__image" src="./image/logo-placeholder.jpeg" alt="logo">
+                <img class="credit__image" v-for="img of images" :src="img.src" alt="logo">
             </div>
-            <div class="credit__number">####&#9####&#9####&#9####</div>
+            <input id="credit-number" v-model="cardNumber" v-mask="'#### #### #### ####'" class="credit__input" type="text" disabled placeholder="#### #### #### ####">
             <div class="credit__holder-wrp">
-                <p class="credit__holder">Card holder</p>
-                <p class="credit__expires">Expirec</p>
+                <p class="credit__holder">Card Holder</p>
+                <p class="credit__expires">Card Expires</p>
             </div>
             <div class="credit__name-wrp">
-                <p class="credit__name">name lastname</p>
-                <p class="credit__date">mm/yy</p>
+                <input v-model="cardHolder" class="credit__name" placeholder="Card Holder" disabled>
+                <input v-model="cardExpires" class="credit__date" placeholder="##/##" disabled>
             </div>
         </div>
         <form class="order" v-if="basket.length > 0">
-            <input id="number" class="order__card-number" type="text" placeholder="Card Number">
-            <input id="holder" class="order__card-holder" type="text" placeholder="Card Holder">
-            <input id="date" class="order__card-date" type="text" placeholder="Expires">
-            <input id="cvv" class="order__card-cvv" type="text" placeholder="CVV">
+            <input id="number" v-model="cardNumber" v-mask="'#### #### #### ####'" class="order__card-number" type="text" placeholder="#### #### #### ####">
+            <input id="holder" v-model="cardHolder" class="order__card-holder" type="text" placeholder="Card Holder">
+            <input id="date" v-model="cardExpires" v-mask="'##/##'" class="order__card-date" type="text" placeholder="Expires">
+            <input id="cvv" v-model="cardCVV" v-mask="'###'" class="order__card-cvv" type="text" placeholder="CVV">
         </form>
     </div>
     <div class="cart" v-if="basket.length > 0">
-        <div class="cart__item" v-for="(item, n) in basket" :key="item.id">
+        <div class="cart__item" v-for="item in basket" :key="item.id">
             <i class="fas fa-trash-alt" v-on:click="removeItem(item)"></i>
             <img src="./image/unnamed.jpg" alt="photo item" class="cart__image">
             <h4 class="cart__title">{{ item.name }}:&nbsp;{{ item.id }}</h4>

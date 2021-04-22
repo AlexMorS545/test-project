@@ -1,5 +1,7 @@
-import catalog from '../db/items'
+import catalog from '../db/catalog'
+import images from '../db/images'
 import axios from 'axios'
+import mask from 'vue-the-mask'
 
 const app = new Vue({
     el: '#app',
@@ -9,8 +11,15 @@ const app = new Vue({
             basketTitle: 'Basket',
             items: [],
             basket: [],
+            images: [],
+            imageSrc: '',
             summa: 0,
-            info: null
+            info: null,
+            count: 0,
+            cardNumber: '',
+            cardHolder: '',
+            cardExpires: '',
+            cardCVV: ''
         }
     },
     methods: {
@@ -28,11 +37,13 @@ const app = new Vue({
             }
             this.totalSumma()
             this.saveCart()
+            this.getCount()
         },
         removeItem(item) {
             this.basket.splice(this.basket.indexOf(item), 1)
             this.totalSumma()
             this.saveCart()
+            this.getCount()
         },
         removeFromBasket(item) {
             this.basket.forEach(elem => {
@@ -46,6 +57,7 @@ const app = new Vue({
             })
             this.totalSumma()
             this.saveCart()
+            this.getCount()
         },
         totalSumma() {
             this.summa = this.basket.reduce((s, item) => s += (item.count * item.price), 0)
@@ -53,12 +65,24 @@ const app = new Vue({
         },
         saveCart() {
             localStorage.setItem('cartItems', JSON.stringify(this.basket)) 
-        }
+        },
+        getCount() {
+            this.count = this.basket.reduce((c, item) => c += item.count, 0)
+            localStorage.setItem('summa', this.summa)
+        },
+    //     changeImage(img) {
+    //         let imageID = +this.cardNumber.charAt(0)
+    //         this.images.forEach(img => {
+    //             if(imageID === img.id && imageID !== 0) {
+    //                 this.imageSrc = img.src
+    //                 console.log('src', this.imageSrc)
+    //             }
+    //         })
+    //     }         
     },
     mounted() {
-        catalog.forEach(item => {
-            this.items.push(item)
-        })
+        catalog.forEach(item => this.items.push(item))
+
         if(localStorage.getItem('cartItems') && localStorage.getItem('summa')) {
             try {
                 this.basket = JSON.parse(localStorage.getItem('cartItems'))
@@ -68,13 +92,8 @@ const app = new Vue({
                 localStorage.removeItem('summa')
             }
         }
-        axios
-            .get('https://api.bincodes.com/bin/?format=json&api_key=6348b96e150ca0defa28daf2f02401e8&bin=515735')
-            .then(response => {
-                this.info = response.data
-                console.log(this.info);
-            })
-            .catch(error => console.log('error', error))
+
+        images.forEach(img => this.images.push(img))
     }
 
 })
