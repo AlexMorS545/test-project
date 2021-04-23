@@ -46,20 +46,18 @@ const app = new Vue({
             this.getCount()
         },
         removeFromBasket(item) {
-            this.basket.find(elem => {
+            this.basket.forEach(elem => {
                 if(elem.id === item.id) {
                     if(elem.count > 1) {
-                        // this.removeItem()
                         elem.count--
                     } else {
-                        // elem.count--
-                        this.removeItem()
+                        this.basket.splice(this.basket.indexOf(item), 1)
                     }
                 }
-                this.totalSumma()
-                this.saveCart()
-                this.getCount()
             })
+            this.totalSumma()
+            this.saveCart()
+            this.getCount()
         },
         totalSumma() {
             this.summa = this.basket.reduce((s, item) => s += (item.count * item.price), 0)
@@ -73,7 +71,6 @@ const app = new Vue({
             localStorage.setItem('summa', this.summa)
         },
         changeImage(id) {
-            
             this.images.forEach(img => {
                 if(+id === img.id) {
                     this.imageSrc = img.src
@@ -82,12 +79,12 @@ const app = new Vue({
             })
         },
         cleanBasket() {
-            localStorage.clear()
+            localStorage.removeItem('cartItems')
+            localStorage.removeItem('summa')
         }
     },
     mounted() {
         catalog.forEach(item => this.items.push(item))
-
         if(localStorage.getItem('cartItems') && localStorage.getItem('summa')) {
             try {
                 this.basket = JSON.parse(localStorage.getItem('cartItems'))
@@ -97,8 +94,6 @@ const app = new Vue({
                 localStorage.removeItem('summa')
             }
         }
-
         images.forEach(img => this.images.push(img))
     }
-
 })

@@ -2046,23 +2046,18 @@ var app = new Vue({
     removeFromBasket: function removeFromBasket(item) {
       var _this = this;
 
-      this.basket.find(function (elem) {
+      this.basket.forEach(function (elem) {
         if (elem.id === item.id) {
           if (elem.count > 1) {
-            // this.removeItem()
             elem.count--;
           } else {
-            // elem.count--
-            _this.removeItem();
+            _this.basket.splice(_this.basket.indexOf(item), 1);
           }
         }
-
-        _this.totalSumma();
-
-        _this.saveCart();
-
-        _this.getCount();
       });
+      this.totalSumma();
+      this.saveCart();
+      this.getCount();
     },
     totalSumma: function totalSumma() {
       this.summa = this.basket.reduce(function (s, item) {
@@ -2090,7 +2085,8 @@ var app = new Vue({
       });
     },
     cleanBasket: function cleanBasket() {
-      localStorage.clear();
+      localStorage.removeItem('cartItems');
+      localStorage.removeItem('summa');
     }
   },
   mounted: function mounted() {
@@ -2143,7 +2139,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65290" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39269" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
